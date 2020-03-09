@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/">
+<style>.uk-navbar-container.uk-light:not(.uk-navbar-transparent):not(.uk-navbar-primary) {
+    background: #222;
+  }
+  
+  #mobile-navbar .uk-offcanvas-bar {
+    box-shadow: 2px 0 5px 0 #0e0e0e;
+  }
+  #mobile-navbar li:nth-child(1),
+  #mobile-navbar li:nth-child(2),
+  #mobile-navbar li:nth-child(3) {
+    border-left: unset;
+  }
+  #mobile-navbar li {
+    padding-left: 5px;
+    border-left: 2px solid transparent;
+  }
+  #mobile-navbar li.uk-active {
+    padding-left: 5px;
+    border-left: 2px solid #545454;
+  }
+  
+  .uk-sticky-fixed {
+    box-shadow: 0 1px 5px 0 #0e0e0e;
+  }
+  </style>
+    </head>
+    <body>
+        <div class="uk-offcanvas-content">
+          <!-- menu position. delete .uk-light to change black navbar to white (also you should change logo to dark one)-->
+          <nav class="uk-navbar-container uk-light" uk-navbar="mode: click" uk-sticky="animation: uk-animation-slide-top; show-on-up: true">
+            <!-- logo or title-->
+            <div class="uk-navbar-left nav-overlay"><a class="uk-navbar-item uk-logo" href="#">
+                <!--h3 Site Name--><img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png" alt="logo" width="64"></a></div>
+            <!-- end logo or title-->
+            <!-- menu-->
+            <div class="uk-navbar-right nav-overlay">
+              <div class="uk-navbar-flip">
+                <ul class="uk-navbar-nav uk-visible@s">
+                  <li class="uk-active"><a href="#">Item 1</a></li>
+                  <li><a href="#">Item 2</a></li>
+                  <li><a href="#">Item 3</a></li>
+                  <li><a href="#">Item 4</a></li>
+                  <li><a href="#">Item 5</a></li>
+                  <li><a href="#">Item 6</a></li>
+                  <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+                </ul>
+                <ul class="uk-navbar-nav uk-hidden@s">
+                  <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
+                  <li><a class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle="target: #mobile-navbar"></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- endmenu-->
+            <!-- Overlay Search-->
+            <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+              <div class="uk-navbar-item uk-width-expand">
+                <form class="uk-search uk-search-navbar uk-width-1-1">
+                  <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                </form>
+              </div><a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+            </div>
+            <!-- end overlay search-->
+          </nav>
+          <!-- end menu position-->
+          <!-- off-canvas menu-->
+          <div id="mobile-navbar" uk-offcanvas="mode: slide; flip: false">
+            <div class="uk-offcanvas-bar">
+              <!-- off-canvas close button-->
+              <button class="uk-offcanvas-close" type="button" uk-close></button>
+              <!-- off-canvas close button-->
+              <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                <!-- logo or title-->
+                <li class="uk-text-center" style="padding: 0 0 25px 0;"><a href="#">
+                    <!--h3 Site Name--><img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png" alt="logo" width="64"></a></li>
+                <!-- end logo or title-->
+                <!-- menu-->
+                <li>
+                  <hr>
+                </li>
+                <li class="uk-text-center">
+                  <h3>Menu</h3>
+                </li>
+                <li class="uk-active"><a href="#">Item 1
+                    <!--span.uk-light(uk-icon="icon: pencil")-->
+                    <!--| #{" "}Item 1--></a></li>
+                <li><a href="#">Item 2
+                    <!--span.uk-light(uk-icon="icon: code")-->
+                    <!--| #{" "}Item #{i}#{j}--></a></li>
+                <li><a href="#">Item 3
+                    <!--span.uk-light(uk-icon="icon: code")-->
+                    <!--| #{" "}Item #{i}#{j}--></a></li>
+                <li><a href="#">Item 4
+                    <!--span.uk-light(uk-icon="icon: code")-->
+                    <!--| #{" "}Item #{i}#{j}--></a></li>
+                <li><a href="#">Item 5
+                    <!--span.uk-light(uk-icon="icon: code")-->
+                    <!--| #{" "}Item #{i}#{j}--></a></li>
+                <li><a href="#">Item 6
+                    <!--span.uk-light(uk-icon="icon: code")-->
+                    <!--| #{" "}Item #{i}#{j}--></a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- end off-canvas menu-->
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: pull">
+
+            <ul class="uk-slideshow-items">
+                <li>
+                    <img src="img/3134716.jpg" alt="" uk-cover>
+                </li>
+            </ul>
+        </div>
+        <div class="uk-position-relative">
+               <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGBd613t13JWSI4TzLrEM9u6CiG6vcr7uxTZJz-OUdhhuKvw/viewform?usp=sf_link">   <img data-src="img/final poster for rbs event mod1-min.jpg" width="1800" height="1200" alt="" uk-img></a>
+      </div>
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: pull">
+
+            <ul class="uk-slideshow-items">
+                <li>
+                    <img src="img/1.jpg" alt="" uk-cover>
+                </li>
+                <li>
+                    <img src="img/2.jpg" alt="" uk-cover>
+                </li>
+                <li>
+                    <img src="img/3.jpg" alt="" uk-cover>
+                </li>
+            </ul>
+        
+            <a class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        
+        </div>
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </body>
+</html>
