@@ -620,9 +620,9 @@
     </footer>
 <!-- ///////////////////////////// scroll to top///////////////////////////////////// -->
     <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="uk-margin-small-right" uk-icon="arrow-up" style="color: white;"></span></button>
-    <button onclick="topFunction()" id="myBtn2" title="Go to top"><span class="uk-margin-small-right" uk-icon="arrow-up" style="color: white;"></span></button>
+    <button id="myBtn2"><a href="https://wa.me/919027619344/?text=Hi SunShineZoom, Whatsup" uk-icon="icon: whatsapp"></a></button>
     <style>
-      #myBtn {
+  #myBtn {
   display: none;
   position: fixed;
   bottom: 20px;
@@ -637,7 +637,9 @@
   padding: 5px;
   border-radius: 10px;
 }
-
+#myBtn:hover {
+  background-color: #555;
+}
 #myBtn2 {
   display: none;
   position: fixed;
@@ -647,14 +649,11 @@
   font-size: 28px;
   border: none;
   outline: none;
-  background-color: rgb(41, 145, 230);
+  background-color: rgb(41, 230, 41);
   color: white;
   cursor: pointer;
   padding: 5px;
   border-radius: 10px;
-}
-#myBtn:hover {
-  background-color: #555;
 }
 #myBtn2:hover {
   background-color: #555;
@@ -663,15 +662,17 @@
     <script>
 //Get the button
 var mybutton = document.getElementById("myBtn");
-
+var mybutton2 = document.getElementById("myBtn2");
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 20) {
     mybutton.style.display = "block";
+    mybutton2.style.display = "block";
   } else {
     mybutton.style.display = "none";
+    mybutton2.style.display = "none";
   }
 }
 
