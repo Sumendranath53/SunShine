@@ -1,180 +1,193 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Title</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/uikit.min.css" />
-        <link rel="stylesheet" href="css/">
-<style>.uk-navbar-container.uk-light:not(.uk-navbar-transparent):not(.uk-navbar-primary) {
-    background: #222;
-  }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Playfair+Display+SC:900&display=swap');
+
+main{
+  background-color: #242424;
+  color: white;
+  font-family: 'Playfair Display SC';
+  font-size: 60px;
+  max-width: 10000px;
+  overflow-x: hidden;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 80px;
+  grid-auto-flow: dense;
+  grid-gap: 10px;
+}
+
+.grid li{ position: relative; }
+
+.grid li:nth-child(n+1){
+  grid-row: span 2;
+}
+
+.grid li:nth-child(2n+1){
+  grid-row: span 3;
+  grid-column: span 2;
+}
+
+/* .grid li:nth-child(2n+1){
+  grid-row: span 4;
+  grid-column: span 2;
+} */
+
+.grid li:nth-child(7n+1)::after{
+  content: "Fashion Catalogue";
+  opacity: .6;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+@media (max-width: 768.98px){
+  main{ font-size: 30px; }
   
-  #mobile-navbar .uk-offcanvas-bar {
-    box-shadow: 2px 0 5px 0 #0e0e0e;
+  .grid{
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-rows: 40px;
+    grid-gap: 5px;
   }
-  #mobile-navbar li:nth-child(1),
-  #mobile-navbar li:nth-child(2),
-  #mobile-navbar li:nth-child(3) {
-    border-left: unset;
+}
+
+@media (max-width: 575.98px){
+  main{ font-size: 15px; }
+  .grid{
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-auto-rows: 24px;
+    grid-gap: 5px;
   }
-  #mobile-navbar li {
-    padding-left: 5px;
-    border-left: 2px solid transparent;
-  }
-  #mobile-navbar li.uk-active {
-    padding-left: 5px;
-    border-left: 2px solid #545454;
-  }
-  
-  .uk-sticky-fixed {
-    box-shadow: 0 1px 5px 0 #0e0e0e;
-  }
+}
+
+
+*{ box-sizing: border-box; }
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  margin: 0;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
   </style>
-    </head>
-    <body>
-        <div class="uk-offcanvas-content">
-          <!-- menu position. delete .uk-light to change black navbar to white (also you should change logo to dark one)-->
-          <nav class="uk-navbar-container uk-light" uk-navbar="mode: click" uk-sticky="animation: uk-animation-slide-top; show-on-up: true">
-            <!-- logo or title-->
-            <div class="uk-navbar-left nav-overlay"><a class="uk-navbar-item uk-logo" href="#">
-                <!--h3 Site Name--><img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png" alt="logo" width="64"></a></div>
-            <!-- end logo or title-->
-            <!-- menu-->
-            <div class="uk-navbar-right nav-overlay">
-              <div class="uk-navbar-flip">
-                <ul class="uk-navbar-nav uk-visible@s">
-                  <li class="uk-active"><a href="#">Item 1</a></li>
-                  <li><a href="#">Item 2</a></li>
-                  <li><a href="#">Item 3</a></li>
-                  <li><a href="#">Item 4</a></li>
-                  <li><a href="#">Item 5</a></li>
-                  <li><a href="#">Item 6</a></li>
-                  <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
-                </ul>
-                <ul class="uk-navbar-nav uk-hidden@s">
-                  <li><a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a></li>
-                  <li><a class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle="target: #mobile-navbar"></a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- endmenu-->
-            <!-- Overlay Search-->
-            <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
-              <div class="uk-navbar-item uk-width-expand">
-                <form class="uk-search uk-search-navbar uk-width-1-1">
-                  <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
-                </form>
-              </div><a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-            </div>
-            <!-- end overlay search-->
-          </nav>
-          <!-- end menu position-->
-          <!-- off-canvas menu-->
-          <div id="mobile-navbar" uk-offcanvas="mode: slide; flip: false">
-            <div class="uk-offcanvas-bar">
-              <!-- off-canvas close button-->
-              <button class="uk-offcanvas-close" type="button" uk-close></button>
-              <!-- off-canvas close button-->
-              <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
-                <!-- logo or title-->
-                <li class="uk-text-center" style="padding: 0 0 25px 0;"><a href="#">
-                    <!--h3 Site Name--><img src="http://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png" alt="logo" width="64"></a></li>
-                <!-- end logo or title-->
-                <!-- menu-->
-                <li>
-                  <hr>
-                </li>
-                <li class="uk-text-center">
-                  <h3>Menu</h3>
-                </li>
-                <li class="uk-active"><a href="#">Item 1
-                    <!--span.uk-light(uk-icon="icon: pencil")-->
-                    <!--| #{" "}Item 1--></a></li>
-                <li><a href="#">Item 2
-                    <!--span.uk-light(uk-icon="icon: code")-->
-                    <!--| #{" "}Item #{i}#{j}--></a></li>
-                <li><a href="#">Item 3
-                    <!--span.uk-light(uk-icon="icon: code")-->
-                    <!--| #{" "}Item #{i}#{j}--></a></li>
-                <li><a href="#">Item 4
-                    <!--span.uk-light(uk-icon="icon: code")-->
-                    <!--| #{" "}Item #{i}#{j}--></a></li>
-                <li><a href="#">Item 5
-                    <!--span.uk-light(uk-icon="icon: code")-->
-                    <!--| #{" "}Item #{i}#{j}--></a></li>
-                <li><a href="#">Item 6
-                    <!--span.uk-light(uk-icon="icon: code")-->
-                    <!--| #{" "}Item #{i}#{j}--></a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- end off-canvas menu-->
-          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: pull">
-
-            <ul class="uk-slideshow-items">
-                <li>
-                    <img src="img/3134716.jpg" alt="" uk-cover>
-                </li>
-            </ul>
-        </div>
-        <div class="uk-position-relative">
-               <a href="https://docs.google.com/forms/d/e/1FAIpQLSfGBd613t13JWSI4TzLrEM9u6CiG6vcr7uxTZJz-OUdhhuKvw/viewform?usp=sf_link">   <img data-src="img/final poster for rbs event mod1-min.jpg" width="1800" height="1200" alt="" uk-img></a>
-      </div>
-        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: pull">
-
-            <ul class="uk-slideshow-items">
-                <li>
-                    <img src="img/1.jpg" alt="" uk-cover>
-                </li>
-                <li>
-                    <img src="img/2.jpg" alt="" uk-cover>
-                </li>
-                <li>
-                    <img src="img/3.jpg" alt="" uk-cover>
-                </li>
-            </ul>
-        
-            <a class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-            <a class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-        
-        </div>
-
-
-
-<div>
-  <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s" uk-grid>
-    <div class="uk-card-media-left uk-cover-container">
-        <img src="img/neoncafe.jpeg" alt="" uk-cover>
-        <canvas width="600" height="400"></canvas>
-    </div>
-    <div>
-        <div class="uk-card-body">
-            <h3 class="uk-card-title">Media Left</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-        </div>
-    </div>
-</div>
-
-<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s" uk-grid>
-    <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-        <img src="img/friendsforever.jpeg" alt="" uk-cover>
-        <canvas width="600" height="400"></canvas>
-    </div>
-    <div>
-        <div class="uk-card-body">
-            <h3 class="uk-card-title">Media Right</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-        </div>
-    </div>
-</div>
-</div>
-
-
-
-
-
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
-    </body>
+</head>
+<body>
+  <main>
+    <ul class="grid">
+      <li><img src="https://images.unsplash.com/photo-1473286835901-04adb1afab03?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1582284833596-b1e428eda83e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1540907389453-f0e0a8dc70eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1542009708210-df3fb1850c51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1558531592-ed8812e76783?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509631102211-5965b3c98b07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1510649258574-b0be6c7ab447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1491956142110-8a4226a12077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509821649579-6903861d247b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1571513800374-df1bbe650e56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1581977325979-80749e97b0c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1580404891753-3c3952d7bd0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579954568250-8b7abc7743e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579422592053-eb3b5e3d5419?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579556752416-e00e5b09294b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579710242192-d314e0f12693?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579447980860-a12dde7566b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1575553283022-09b7b792f200?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1577905570428-ee76572af707?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1576944264003-4a3955cd2b53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      
+      <li><img src="https://images.unsplash.com/photo-1473286835901-04adb1afab03?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1582284833596-b1e428eda83e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1540907389453-f0e0a8dc70eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1542009708210-df3fb1850c51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1558531592-ed8812e76783?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509631102211-5965b3c98b07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1510649258574-b0be6c7ab447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1491956142110-8a4226a12077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509821649579-6903861d247b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1571513800374-df1bbe650e56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1581977325979-80749e97b0c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1580404891753-3c3952d7bd0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579954568250-8b7abc7743e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579422592053-eb3b5e3d5419?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579556752416-e00e5b09294b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579710242192-d314e0f12693?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579447980860-a12dde7566b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1575553283022-09b7b792f200?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1577905570428-ee76572af707?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1576944264003-4a3955cd2b53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      
+      <li><img src="https://images.unsplash.com/photo-1473286835901-04adb1afab03?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1582284833596-b1e428eda83e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1540907389453-f0e0a8dc70eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1542009708210-df3fb1850c51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1558531592-ed8812e76783?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509631102211-5965b3c98b07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1510649258574-b0be6c7ab447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1491956142110-8a4226a12077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509821649579-6903861d247b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1571513800374-df1bbe650e56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1581977325979-80749e97b0c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1580404891753-3c3952d7bd0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579954568250-8b7abc7743e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579422592053-eb3b5e3d5419?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579556752416-e00e5b09294b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579710242192-d314e0f12693?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579447980860-a12dde7566b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1575553283022-09b7b792f200?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1577905570428-ee76572af707?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1576944264003-4a3955cd2b53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      
+      <li><img src="https://images.unsplash.com/photo-1473286835901-04adb1afab03?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1582284833596-b1e428eda83e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1540907389453-f0e0a8dc70eb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1542009708210-df3fb1850c51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1558531592-ed8812e76783?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509631102211-5965b3c98b07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1510649258574-b0be6c7ab447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1491956142110-8a4226a12077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1509821649579-6903861d247b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1571513800374-df1bbe650e56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1581977325979-80749e97b0c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1580404891753-3c3952d7bd0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579954568250-8b7abc7743e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579422592053-eb3b5e3d5419?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579556752416-e00e5b09294b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579710242192-d314e0f12693?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1579447980860-a12dde7566b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1575553283022-09b7b792f200?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1577905570428-ee76572af707?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+      <li><img src="https://images.unsplash.com/photo-1576944264003-4a3955cd2b53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" alt="Fashion Photo" loading="lazy"></li>
+    </ul>
+  </main>
+</body>
 </html>
